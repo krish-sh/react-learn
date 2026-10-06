@@ -2,17 +2,16 @@
 
 import { useState } from "react";
 
-export function MyButton() {
-  const [count, setCount]  = useState(0)
-  function handleClick() {
-    setCount(count + 1)
-  }
+type buttonType = {
+  onClick: () => void;
+  count: number;
+};
 
-
+export function MyButton({ onClick, count }: buttonType) {
   return (
     <div>
       <button
-        onClick={handleClick}
+        onClick={onClick}
         style={{
           backgroundColor: "blue",
           color: "white",
@@ -23,7 +22,7 @@ export function MyButton() {
           margin: "10px 20px",
         }}
       >
-        Click me {count}
+        Click {count}
       </button>
     </div>
   );
