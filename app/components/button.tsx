@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
+
 export function MyButton() {
+  const [count, setCount]  = useState(0)
   function handleClick() {
-    alert("Button clicked!");
+    setCount(count + 1)
   }
+
 
   return (
     <div>
@@ -19,7 +23,7 @@ export function MyButton() {
           margin: "10px 20px",
         }}
       >
-        Click me
+        Click me {count}
       </button>
     </div>
   );
