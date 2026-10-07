@@ -7,7 +7,7 @@ type buttonType = {
   count: number;
 };
 
-export function MyButton({ onClick, count }: buttonType) {
+export default function MyButton({ onClick, count }: buttonType) {
   return (
     <div>
       <button
