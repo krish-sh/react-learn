@@ -28,6 +28,12 @@ const Book = () => {
       price: "$8",
     },
   ];
+
+  const getBook = (id) => {
+    const book = books.find((book) => book.id === id);
+    console.log(book);
+  };
+
   return (
     <div className="book-list">
       {books.map((item) => (
@@ -36,13 +42,7 @@ const Book = () => {
           <h3>{item.bookName}</h3>
           <p>{item.Author}</p>
           <p>{item.price}</p>
-          <button
-            onClick={() =>
-              alert(`Item added ${item.bookName}, Price: ${item.price}`)
-            }
-          >
-            Click to Order
-          </button>
+          <button onClick={() => getBook(item.id)}>Click me</button>
         </div>
       ))}
     </div>

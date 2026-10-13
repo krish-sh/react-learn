@@ -1,16 +1,12 @@
 import React from "react";
 
 const Form = () => {
-  const handleForm = () => {
-    console.log("Handle form change");
-  };
-
-  const handleClick = () => {
-    alert("Handle button click");
+  const handleForm = (e) => {
+    console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     console.log("Handle submit");
   };
   return (
@@ -18,8 +14,8 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <h2>Typical form</h2>
         <input type="text" onChange={handleForm} />
+        <button type="submit">Click me</button>
       </form>
-      <button onClick={handleClick}>Click me</button>
     </>
   );
 };
