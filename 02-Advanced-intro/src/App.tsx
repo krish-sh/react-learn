@@ -1,10 +1,11 @@
 import "./App.css";
-import CleanupFunction from "./tutorials/02-useEffect/cleanupFunction";
+import Toogle from "./tutorials/08-custom-hook/toogle";
+
 function App() {
   return (
     <>
       <h2>Hello</h2>
-      <CleanupFunction />
+      <Toogle/>
     </>
   );
 }
