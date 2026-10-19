@@ -1,11 +1,10 @@
 import "./App.css";
-import FetchData from "./tutorials/08-custom-hook/fetch-data";
+import Navbar from "./tutorials/09-context-api/Navbar";
 
 function App() {
   return (
     <>
-      <h2>Hello</h2>
-      <FetchData />
+      <Navbar />
     </>
   );
 }
