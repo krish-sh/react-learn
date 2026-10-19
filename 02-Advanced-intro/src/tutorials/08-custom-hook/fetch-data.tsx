@@ -1,8 +1,8 @@
-import useFetchPerson from "./useFetchPerson";
+import useFetch from "./useFetch";
 
 const url = "https://api.github.com/users/krish-sh";
 function FetchData() {
-  const { isLoading, isError, data } = useFetchPerson(url);
+  const { isLoading, isError, data } = useFetch(url);
 
   if (isLoading) {
     return <h4>Loading</h4>;
