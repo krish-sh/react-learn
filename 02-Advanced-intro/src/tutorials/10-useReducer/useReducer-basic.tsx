@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { data } from "../../data";
 
 interface People {
@@ -6,25 +6,37 @@ interface People {
   name: string;
 }
 
+interface State {
+  people: People[];
+}
+
+const DefaultState: State = {
+  people: data,
+};
+
+const reducer = () => {};
+
 const UseReducerBasic = () => {
-  const [people, setPeople] = useState<People[]>(data);
+  const [state, dispatch] = useReducer(reducer, DefaultState);
+
+  //   const [people, setPeople] = useState<People[]>(data);
 
   const handleRemove = (id: number) => {
-    const remove = people.filter((person) => person.id !== id);
-    setPeople(remove);
+    // const remove = people.filter((person) => person.id !== id);
+    // setPeople(remove);
   };
 
   const handleClear = () => {
-    setPeople([]);
+    // setPeople([]);
   };
 
   const handleReset = () => {
-    setPeople(data);
+    // setPeople(data);
   };
 
   return (
     <div>
-      {people.map((person) => (
+      {state.people.map((person) => (
         <div key={person.id}>
           <h3>{person.name}</h3>
           <button onClick={() => handleRemove(person.id)}>remove</button>
@@ -32,10 +44,10 @@ const UseReducerBasic = () => {
       ))}
       <button
         onClick={
-          people.length === 0 ? () => handleReset() : () => handleClear()
+          state.people.length === 0 ? () => handleReset() : () => handleClear()
         }
       >
-        {people.length === 0 ? "Reset" : "Clear"}
+        {state.people.length === 0 ? "Reset" : "Clear"}
       </button>
     </div>
   );
