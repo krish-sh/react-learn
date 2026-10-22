@@ -14,24 +14,40 @@ const DefaultState: State = {
   people: data,
 };
 
-const reducer = () => {};
+const reducer = (state, action) => {
+  if (action.type === "CLEAR_LIST") {
+    return {
+      ...state,
+      people: [],
+    };
+  }
+  if (action.type === "RESET_LIST") {
+    return {
+      ...state,
+      people: data,
+    };
+  }
+  if (action.type === "REMOVE_ITEM") {
+    return {
+      ...state,
+      people: state.people.filter((person) => person.id !== action.payload),
+    };
+  }
+};
 
 const UseReducerBasic = () => {
   const [state, dispatch] = useReducer(reducer, DefaultState);
 
-  //   const [people, setPeople] = useState<People[]>(data);
-
   const handleRemove = (id: number) => {
-    // const remove = people.filter((person) => person.id !== id);
-    // setPeople(remove);
+    dispatch({ type: "REMOVE_ITEM", payload: id });
   };
 
   const handleClear = () => {
-    // setPeople([]);
+    dispatch({ type: "CLEAR_LIST" });
   };
 
   const handleReset = () => {
-    // setPeople(data);
+    dispatch({ type: "RESET_LIST" });
   };
 
   return (
