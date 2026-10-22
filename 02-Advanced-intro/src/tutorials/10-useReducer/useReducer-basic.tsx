@@ -1,5 +1,7 @@
 import { useReducer, useState } from "react";
 import { data } from "../../data";
+import { CLEAR_LIST, REMOVE_ITEM, RESET_LIST } from "./action";
+import reducer from "./reducer";
 
 interface People {
   id: number;
@@ -14,40 +16,19 @@ const DefaultState: State = {
   people: data,
 };
 
-const reducer = (state, action) => {
-  if (action.type === "CLEAR_LIST") {
-    return {
-      ...state,
-      people: [],
-    };
-  }
-  if (action.type === "RESET_LIST") {
-    return {
-      ...state,
-      people: data,
-    };
-  }
-  if (action.type === "REMOVE_ITEM") {
-    return {
-      ...state,
-      people: state.people.filter((person) => person.id !== action.payload),
-    };
-  }
-};
-
 const UseReducerBasic = () => {
   const [state, dispatch] = useReducer(reducer, DefaultState);
 
   const handleRemove = (id: number) => {
-    dispatch({ type: "REMOVE_ITEM", payload: id });
+    dispatch({ type: REMOVE_ITEM, payload: id });
   };
 
   const handleClear = () => {
-    dispatch({ type: "CLEAR_LIST" });
+    dispatch({ type: CLEAR_LIST });
   };
 
   const handleReset = () => {
-    dispatch({ type: "RESET_LIST" });
+    dispatch({ type: RESET_LIST });
   };
 
   return (
