@@ -1,12 +1,12 @@
 import "./App.css";
-import Navbar from "./tutorials/09-context-api/Navbar";
+import UseReducerBasic from "./tutorials/10-useReducer/useReducer-basic";
 
 function App() {
 
   
   return (
     <>
-      <Navbar />
+    <UseReducerBasic/>
     </>
   );
 }
