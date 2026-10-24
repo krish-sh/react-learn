@@ -1,15 +1,22 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { data } from "../../data";
 import List from "./List";
+import slowFunction from "./03-hook/slowFunction";
 
 const Memo = () => {
   const [count, setCount] = useState(0);
   const [people, setPeople] = useState(data);
 
-  const removePerson = useCallback((id) => {
-    const remove = people.filter((person) => person.id !== id);
-    setPeople(remove);
-  },[people])
+  const value = useMemo(() => slowFunction(), []);
+  console.log(value);
+
+  const removePerson = useCallback(
+    (id) => {
+      const remove = people.filter((person) => person.id !== id);
+      setPeople(remove);
+    },
+    [people],
+  );
 
   const handleCount = useCallback(() => {
     setCount(count + 1);
