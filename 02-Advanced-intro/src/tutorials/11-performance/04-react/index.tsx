@@ -1,9 +1,12 @@
-import { useState, useTransition } from "react";
+import { lazy, useState, useTransition, Suspense } from "react";
+const SlowComponent = lazy(() => import("./SlowComponent"));
+// import SlowComponent from "./SlowComponent";
 
 const Index = () => {
   const [text, setText] = useState("");
   const [items, setItems] = useState<React.ReactNode[]>([]);
   const [isPending, startTransition] = useTransition();
+  const [show, setShow] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -34,6 +37,12 @@ const Index = () => {
           ))}
         </div>
       )}
+
+      <button onClick={() => setShow(!show)}>toogle</button>
+
+      <Suspense fallback={<h4>Loading...</h4>}>
+        {show && <SlowComponent />}
+      </Suspense>
     </section>
   );
 };
