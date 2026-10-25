@@ -17,33 +17,33 @@ const Index = () => {
   };
 
   return (
-    <section>
-      <form>
-        <input type="text" value={text} onChange={handleChange} />
-      </form>
+    <Suspense fallback={<h4>Loading...</h4>}>
+      <section>
+        <form>
+          <input type="text" value={text} onChange={handleChange} />
+        </form>
 
-      <div>
-        <h4>Item Below</h4>
-      </div>
-
-      {isPending ? (
-        <h4>Loading...</h4>
-      ) : (
         <div>
-          {items.map((i) => (
-            <div key={i}>
-              <img src="/favicon.svg" alt="" />
-            </div>
-          ))}
+          <h4>Item Below</h4>
         </div>
-      )}
 
-      <button onClick={() => setShow(!show)}>toogle</button>
+        {isPending ? (
+          <h4>Loading...</h4>
+        ) : (
+          <div>
+            {items.map((i) => (
+              <div key={i}>
+                <img src="/favicon.svg" alt="" />
+              </div>
+            ))}
+          </div>
+        )}
 
-      <Suspense fallback={<h4>Loading...</h4>}>
+        <button onClick={() => setShow(!show)}>toogle</button>
+
         {show && <SlowComponent />}
-      </Suspense>
-    </section>
+      </section>
+    </Suspense>
   );
 };
 

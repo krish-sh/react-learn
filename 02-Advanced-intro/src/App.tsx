@@ -1,12 +1,10 @@
 import "./App.css";
-import UseReducerBasic from "./tutorials/10-useReducer/useReducer-basic";
+import Index from "./tutorials/11-performance/04-react";
 
 function App() {
-
-  
   return (
     <>
-    <UseReducerBasic/>
+    <Index/>
     </>
   );
 }
